@@ -25,4 +25,19 @@ public class CategoriaService {
         return lista;
     }
     
+    
+    
+     @Transactional(readOnly=true)
+    public Categoria getCategoria(Categoria categoria){
+        return categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);
+    }
+        // SE USA PARA INDICAR QUE SE HARA UNA TRANSACCIION A UNA BD 
+    @Transactional
+    public void save(Categoria categoria){
+        categoriaRepository.save(categoria);
+    } 
+    @Transactional
+    public void delete(Categoria categoria){
+        categoriaRepository.delete(categoria);
+    } 
 }
